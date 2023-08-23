@@ -1,29 +1,45 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+//import css file
+import "./index.css";
 
+const author = "Drew Gilpin Faust";
+const img = "https://images-na.ssl-images-amazon.com/images/I/81LGc69gzQL._AC_UL900_SR900,600_.jpg";
+const title = "Necessary Trouble: Growing Up at Midcentury";
+
+const firstBook = {
+  img: "https://images-na.ssl-images-amazon.com/images/I/81LGc69gzQL._AC_UL900_SR900,600_.jpg",
+  title: "Necessary Trouble: Growing Up at Midcentury",
+  author: "Drew Gilpin Faust"
+};
+
+const secondBook = {
+  img: "https://images-na.ssl-images-amazon.com/images/I/81u5A4IvUfL._AC_UL900_SR900,600_.jpg",
+  title:
+    "Tasting History: Explore the Past through 4,000 Years of Recipes (A Cookbook)",
+  author: "Max Miller, Ann Volkwein",
+};
 const Booklist = () => {
-  return (<section className='Booklist'><Book/>
-        <Book/>
-        </section>
-  )
-}
-
-const Book = () => {return (<article className='Book'>
-  <Image />
-  <Title />
-  <Author />
-  </article>)}
-
-  const Image = () => (
-    <img
-      src="https://m.media-amazon.com/images/I/41oihh5M3jL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg"
-      alt="Necessary Trouble: Growing Up at Midcentury"
-    />
+  return (
+    <section className="booklist">
+      <Book img={firstBook.img} author={firstBook.author} title={firstBook.title} />
+      <Book img={secondBook.img} author={secondBook.author} title={secondBook.title} />
+    </section>
   );
-  const Title = () => <h2>Necessary Trouble: Growing Up at Midcentury</h2>;
-  const Author = () => <h2>Drew Gilpin Faust </h2>;
+};
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const Book = (props) => {
+  return (
+    <article className='book'>
+      <img src={props.img} />
+      <h2>{props.title}</h2>
+      <h4>{props.author}</h4>
+    </article>
+  );
+};
+
+
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(<Booklist />);
